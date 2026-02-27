@@ -15,3 +15,12 @@ resource "aws_iam_group_policy_attachment" "developer_attach" {
   group      = aws_iam_group.developers.name
   policy_arn = "arn:aws:iam::aws:policy/PowerUserAccess"
 }
+
+resource "aws_iam_group" "analysts" {
+  name = "${var.project_name}-analysts"
+}
+
+resource "aws_iam_group_policy_attachment" "analyst_attach" {
+  group      = aws_iam_group.analysts.name
+  policy_arn = "arn:aws:iam::aws:policy/ReadOnlyAccess"
+}
